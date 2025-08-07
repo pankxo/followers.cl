@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Followers.cl</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="/">
+                <i class="fas fa-users me-2"></i>Followers.cl
+            </a>
+            
+            <div class="navbar-nav ms-auto">
+                <span class="navbar-text">
+                    <i class="fas fa-lock me-1"></i>Checkout Seguro
+                </span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Checkout Progress -->
+    <section class="py-4 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="checkout-progress">
+                        <div class="progress-step active">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span>Carrito</span>
+                        </div>
+                        <div class="progress-step active">
+                            <i class="fas fa-credit-card"></i>
+                            <span>Pago</span>
+                        </div>
+                        <div class="progress-step">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Confirmación</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Checkout Content -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <!-- Payment Form -->
+                <div class="col-lg-8">
+                    <div class="checkout-card">
+                        <h4 class="mb-4">
+                            <i class="fas fa-credit-card me-2"></i>Información de Pago
+                        </h4>
+                        
+                        <div id="checkout-loading" class="text-center py-5" style="display: none;">
+                            <div class="spinner-border text-primary" role="status">
+                                <span class="visually-hidden">Procesando...</span>
+                            </div>
+                            <p class="mt-3">Preparando el pago...</p>
+                        </div>
+
+                        <div id="checkout-form">
+                            <!-- Customer Information -->
+                            <div class="mb-4">
+                                <h6 class="mb-3">
+                                    <i class="fas fa-user me-2"></i>Información del Cliente
+                                </h6>
+                                
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label for="customer-name" class="form-label">Nombre completo *</label>
+                                        <input type="text" class="form-control" id="customer-name" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="customer-email" class="form-label">Correo electrónico *</label>
+                                        <input type="email" class="form-control" id="customer-email" required>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Social Media Information -->
+                            <div class="mb-4">
+                                <h6 class="mb-3">
+                                    <i class="fas fa-at me-2"></i>Información de Redes Sociales
+                                </h6>
+                                
+                                <div id="social-accounts">
+                                    <!-- Social media accounts will be loaded here -->
+                                </div>
+                                
+                                <small class="text-muted">
+                                    <i class="fas fa-info-circle me-1"></i>
+                                    Solo necesitamos tu nombre de usuario, nunca tu contraseña.
+                                </small>
+                            </div>
+
+                            <!-- Payment Method -->
+                            <div class="mb-4">
+                                <h6 class="mb-3">
+                                    <i class="fas fa-payment me-2"></i>Método de Pago
+                                </h6>
+                                
+                                <div class="payment-method active" id="mercadopago-option">
+                                    <i class="fas fa-credit-card me-2"></i>
+                                    <div>
+                                        <strong>MercadoPago</strong>
+                                        <small class="d-block text-muted">Tarjetas de crédito, débito y más</small>
+                                    </div>
+                                    <div class="ms-auto">
+                                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjMwIiB2aWV3Qm94PSIwIDAgMTAwIDMwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cGF0aCBkPSJNMTUgN0g4NUMxMiA3IDE1IDEwIDE1IDE0VjE2QzE1IDIwIDEyIDIzIDggMjNIMTVWN1oiIGZpbGw9IiMwMDlCRTAiLz4KPC9zdmc+Cg==" alt="MercadoPago" class="payment-logo">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="d-grid">
+                                <button id="proceed-payment" class="btn btn-primary btn-lg">
+                                    <i class="fas fa-lock me-2"></i>Proceder al Pago Seguro
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Payment Error -->
+                        <div id="payment-error" class="alert alert-danger" style="display: none;">
+                            <i class="fas fa-exclamation-triangle me-2"></i>
+                            <span id="error-message">Hubo un error procesando el pago. Por favor, intenta de nuevo.</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Order Summary -->
+                <div class="col-lg-4">
+                    <div class="checkout-summary">
+                        <h5 class="mb-4">
+                            <i class="fas fa-receipt me-2"></i>Resumen de la Orden
+                        </h5>
+                        
+                        <div id="order-items">
+                            <!-- Order items will be loaded here -->
+                        </div>
+                        
+                        <hr>
+                        
+                        <div class="summary-item">
+                            <span>Total:</span>
+                            <strong id="order-total">$0</strong>
+                        </div>
+                        
+                        <!-- Security badges -->
+                        <div class="security-section mt-4 pt-4 border-top">
+                            <h6 class="mb-3">
+                                <i class="fas fa-shield-alt me-2 text-success"></i>Compra 100% Segura
+                            </h6>
+                            
+                            <div class="security-features">
+                                <div class="d-flex align-items-center mb-2">
+                                    <i class="fas fa-check text-success me-2"></i>
+                                    <small>Cifrado SSL de 256 bits</small>
+                                </div>
+                                <div class="d-flex align-items-center mb-2">
+                                    <i class="fas fa-check text-success me-2"></i>
+                                    <small>Procesamiento seguro con MercadoPago</small>
+                                </div>
+                                <div class="d-flex align-items-center mb-2">
+                                    <i class="fas fa-check text-success me-2"></i>
+                                    <small>Garantía de devolución del dinero</small>
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-check text-success me-2"></i>
+                                    <small>No almacenamos datos de tarjetas</small>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Support -->
+                        <div class="support-section mt-4 pt-4 border-top">
+                            <h6 class="mb-3">
+                                <i class="fas fa-headset me-2 text-primary"></i>¿Necesitas Ayuda?
+                            </h6>
+                            <p class="small text-muted mb-2">
+                                Nuestro equipo está disponible 24/7 para ayudarte.
+                            </p>
+                            <a href="#" class="btn btn-outline-primary btn-sm">
+                                <i class="fas fa-comments me-1"></i>Contactar Soporte
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0 text-white-50">&copy; 2024 Followers.cl. Todos los derechos reservados.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="#" class="text-white-50 me-3">Términos de Servicio</a>
+                    <a href="#" class="text-white-50">Política de Privacidad</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/app.js"></script>
+    <script src="/js/auth.js"></script>
+    <script src="/js/checkout.js"></script>
+</body>
+</html>

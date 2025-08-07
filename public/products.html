@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos - Followers.cl</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="/">
+                <i class="fas fa-users me-2"></i>Followers.cl
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/products">Productos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/#about">Acerca de</a>
+                    </li>
+                </ul>
+                
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/cart">
+                            <i class="fas fa-shopping-cart me-1"></i>
+                            Carrito <span id="cart-count" class="badge bg-warning">0</span>
+                        </a>
+                    </li>
+                    <li class="nav-item" id="auth-section">
+                        <a class="nav-link" href="/login">
+                            <i class="fas fa-user me-1"></i>Iniciar Sesión
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="py-5 bg-gradient text-white">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-lg-8 mx-auto">
+                    <h1 class="display-4 fw-bold mb-3">Nuestros Productos</h1>
+                    <p class="lead">Elige el paquete perfecto para hacer crecer tu presencia en redes sociales</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filters -->
+    <section class="py-4 bg-light">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <h5 class="mb-0">Filtrar por plataforma:</h5>
+                </div>
+                <div class="col-md-6">
+                    <div class="d-flex gap-2 flex-wrap justify-content-md-end">
+                        <button class="btn btn-outline-primary filter-btn active" data-platform="all">
+                            Todas
+                        </button>
+                        <button class="btn btn-outline-primary filter-btn" data-platform="instagram">
+                            <i class="fab fa-instagram me-1"></i>Instagram
+                        </button>
+                        <button class="btn btn-outline-primary filter-btn" data-platform="tiktok">
+                            <i class="fab fa-tiktok me-1"></i>TikTok
+                        </button>
+                        <button class="btn btn-outline-primary filter-btn" data-platform="youtube">
+                            <i class="fab fa-youtube me-1"></i>YouTube
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Grid -->
+    <section class="py-5">
+        <div class="container">
+            <div id="products-loading" class="text-center py-5">
+                <div class="spinner-border text-primary" role="status">
+                    <span class="visually-hidden">Cargando productos...</span>
+                </div>
+                <p class="mt-3">Cargando productos...</p>
+            </div>
+            
+            <div id="products-container" class="row g-4" style="display: none;">
+                <!-- Products will be loaded here -->
+            </div>
+            
+            <div id="no-products" class="text-center py-5" style="display: none;">
+                <i class="fas fa-search fa-3x text-muted mb-3"></i>
+                <h5>No se encontraron productos</h5>
+                <p class="text-muted">Intenta cambiar los filtros o vuelve más tarde.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row text-center mb-5">
+                <div class="col-lg-8 mx-auto">
+                    <h2 class="display-5 fw-bold mb-3">¿Por qué elegir nuestros productos?</h2>
+                    <p class="lead">Calidad garantizada en cada paquete</p>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-3">
+                    <div class="text-center">
+                        <div class="feature-icon mb-3">
+                            <i class="fas fa-user-check fa-3x text-success"></i>
+                        </div>
+                        <h6>Perfiles Reales</h6>
+                        <small class="text-muted">Solo cuentas reales y activas</small>
+                    </div>
+                </div>
+                
+                <div class="col-md-3">
+                    <div class="text-center">
+                        <div class="feature-icon mb-3">
+                            <i class="fas fa-rocket fa-3x text-primary"></i>
+                        </div>
+                        <h6>Entrega Rápida</h6>
+                        <small class="text-muted">Proceso inmediato tras el pago</small>
+                    </div>
+                </div>
+                
+                <div class="col-md-3">
+                    <div class="text-center">
+                        <div class="feature-icon mb-3">
+                            <i class="fas fa-shield-alt fa-3x text-warning"></i>
+                        </div>
+                        <h6>100% Seguro</h6>
+                        <small class="text-muted">No requiere contraseñas</small>
+                    </div>
+                </div>
+                
+                <div class="col-md-3">
+                    <div class="text-center">
+                        <div class="feature-icon mb-3">
+                            <i class="fas fa-headset fa-3x text-info"></i>
+                        </div>
+                        <h6>Soporte 24/7</h6>
+                        <small class="text-muted">Ayuda cuando la necesites</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <h5 class="mb-3">
+                        <i class="fas fa-users me-2"></i>Followers.cl
+                    </h5>
+                    <p>La mejor plataforma para hacer crecer tu presencia en redes sociales con seguidores reales y de calidad.</p>
+                </div>
+                
+                <div class="col-lg-2">
+                    <h6 class="mb-3">Productos</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white-50">Instagram</a></li>
+                        <li><a href="#" class="text-white-50">TikTok</a></li>
+                        <li><a href="#" class="text-white-50">YouTube</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-2">
+                    <h6 class="mb-3">Empresa</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="/#about" class="text-white-50">Acerca de</a></li>
+                        <li><a href="#" class="text-white-50">Contacto</a></li>
+                        <li><a href="#" class="text-white-50">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-4">
+                    <h6 class="mb-3">Pago Seguro</h6>
+                    <p class="text-white-50 mb-3">Procesamos pagos de forma segura con:</p>
+                    <div class="payment-methods">
+                        <span class="badge bg-light text-dark me-2">MercadoPago</span>
+                        <span class="badge bg-light text-dark me-2">Visa</span>
+                        <span class="badge bg-light text-dark">Mastercard</span>
+                    </div>
+                </div>
+            </div>
+            
+            <hr class="my-4">
+            
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0 text-white-50">&copy; 2024 Followers.cl. Todos los derechos reservados.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="#" class="text-white-50 me-3">Términos de Servicio</a>
+                    <a href="#" class="text-white-50">Política de Privacidad</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/app.js"></script>
+    <script src="/js/auth.js"></script>
+    <script src="/js/products.js"></script>
+</body>
+</html>
