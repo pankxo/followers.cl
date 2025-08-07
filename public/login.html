@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión - Followers.cl</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
+</head>
+<body>
+    <div class="auth-container">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6 col-lg-5">
+                    <div class="auth-card">
+                        <!-- Login Section -->
+                        <div id="login-section">
+                            <div class="text-center mb-4">
+                                <a href="/" class="text-decoration-none">
+                                    <h2 class="text-gradient fw-bold">
+                                        <i class="fas fa-users me-2"></i>Followers.cl
+                                    </h2>
+                                </a>
+                                <p class="text-muted">Inicia sesión en tu cuenta</p>
+                            </div>
+
+                            <form id="login-form">
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">
+                                        <i class="fas fa-envelope me-2"></i>Correo electrónico
+                                    </label>
+                                    <input type="email" class="form-control form-control-lg" id="email" 
+                                           name="email" required placeholder="tu@email.com">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="password" class="form-label">
+                                        <i class="fas fa-lock me-2"></i>Contraseña
+                                    </label>
+                                    <div class="input-group">
+                                        <input type="password" class="form-control form-control-lg" id="password" 
+                                               name="password" required placeholder="Tu contraseña">
+                                        <button class="btn btn-outline-secondary" type="button" id="togglePassword">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="d-flex justify-content-between align-items-center mb-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="rememberMe" name="rememberMe">
+                                        <label class="form-check-label text-muted" for="rememberMe">
+                                            Recordarme
+                                        </label>
+                                    </div>
+                                    <a href="#" class="text-decoration-none small">¿Olvidaste tu contraseña?</a>
+                                </div>
+
+                                <button type="submit" class="btn btn-primary btn-lg w-100 mb-3">
+                                    <i class="fas fa-sign-in-alt me-2"></i>Iniciar Sesión
+                                </button>
+                            </form>
+
+                            <div class="text-center">
+                                <p class="text-muted mb-0">
+                                    ¿No tienes una cuenta? 
+                                    <a href="#" class="auth-switcher text-decoration-none">Regístrate aquí</a>
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Register Section -->
+                        <div id="register-section" style="display: none;">
+                            <div class="text-center mb-4">
+                                <a href="/" class="text-decoration-none">
+                                    <h2 class="text-gradient fw-bold">
+                                        <i class="fas fa-users me-2"></i>Followers.cl
+                                    </h2>
+                                </a>
+                                <p class="text-muted">Crea tu cuenta gratis</p>
+                            </div>
+
+                            <form id="register-form">
+                                <div class="mb-3">
+                                    <label for="register-name" class="form-label">
+                                        <i class="fas fa-user me-2"></i>Nombre completo
+                                    </label>
+                                    <input type="text" class="form-control form-control-lg" id="register-name" 
+                                           name="name" required placeholder="Tu nombre completo">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="register-email" class="form-label">
+                                        <i class="fas fa-envelope me-2"></i>Correo electrónico
+                                    </label>
+                                    <input type="email" class="form-control form-control-lg" id="register-email" 
+                                           name="email" required placeholder="tu@email.com">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="register-password" class="form-label">
+                                        <i class="fas fa-lock me-2"></i>Contraseña
+                                    </label>
+                                    <div class="input-group">
+                                        <input type="password" class="form-control form-control-lg" id="register-password" 
+                                               name="password" required placeholder="Mínimo 6 caracteres" minlength="6">
+                                        <button class="btn btn-outline-secondary" type="button" id="toggleRegisterPassword">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                    </div>
+                                    <div class="form-text">La contraseña debe tener al menos 6 caracteres.</div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="confirmPassword" class="form-label">
+                                        <i class="fas fa-lock me-2"></i>Confirmar contraseña
+                                    </label>
+                                    <div class="input-group">
+                                        <input type="password" class="form-control form-control-lg" id="confirmPassword" 
+                                               name="confirmPassword" required placeholder="Confirma tu contraseña">
+                                        <button class="btn btn-outline-secondary" type="button" id="toggleConfirmPassword">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="mb-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="agreeTerms" name="agreeTerms" required>
+                                        <label class="form-check-label text-muted" for="agreeTerms">
+                                            Acepto los <a href="#" class="text-decoration-none">términos de servicio</a> 
+                                            y la <a href="#" class="text-decoration-none">política de privacidad</a>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <button type="submit" class="btn btn-primary btn-lg w-100 mb-3">
+                                    <i class="fas fa-user-plus me-2"></i>Crear Cuenta
+                                </button>
+                            </form>
+
+                            <div class="text-center">
+                                <p class="text-muted mb-0">
+                                    ¿Ya tienes una cuenta? 
+                                    <a href="#" class="auth-switcher text-decoration-none">Inicia sesión</a>
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Benefits -->
+                        <div class="mt-4 pt-4 border-top">
+                            <h6 class="text-center mb-3">¿Por qué registrarte?</h6>
+                            <div class="row g-3">
+                                <div class="col-6">
+                                    <div class="d-flex align-items-center">
+                                        <i class="fas fa-shopping-cart text-primary me-2"></i>
+                                        <small>Historial de compras</small>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="d-flex align-items-center">
+                                        <i class="fas fa-headset text-primary me-2"></i>
+                                        <small>Soporte prioritario</small>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="d-flex align-items-center">
+                                        <i class="fas fa-percent text-primary me-2"></i>
+                                        <small>Descuentos exclusivos</small>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="d-flex align-items-center">
+                                        <i class="fas fa-bell text-primary me-2"></i>
+                                        <small>Notificaciones</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/app.js"></script>
+    <script src="/js/auth.js"></script>
+    
+    <script>
+        // Password visibility toggles
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggleButtons = [
+                { button: 'togglePassword', input: 'password' },
+                { button: 'toggleRegisterPassword', input: 'register-password' },
+                { button: 'toggleConfirmPassword', input: 'confirmPassword' }
+            ];
+
+            toggleButtons.forEach(({ button, input }) => {
+                const toggleBtn = document.getElementById(button);
+                const passwordInput = document.getElementById(input);
+                
+                if (toggleBtn && passwordInput) {
+                    toggleBtn.addEventListener('click', function() {
+                        const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                        passwordInput.setAttribute('type', type);
+                        
+                        const icon = this.querySelector('i');
+                        icon.classList.toggle('fa-eye');
+                        icon.classList.toggle('fa-eye-slash');
+                    });
+                }
+            });
+
+            // Password confirmation validation
+            const confirmPasswordInput = document.getElementById('confirmPassword');
+            const registerPasswordInput = document.getElementById('register-password');
+            
+            if (confirmPasswordInput && registerPasswordInput) {
+                confirmPasswordInput.addEventListener('input', function() {
+                    if (this.value !== registerPasswordInput.value) {
+                        this.setCustomValidity('Las contraseñas no coinciden');
+                    } else {
+                        this.setCustomValidity('');
+                    }
+                });
+
+                registerPasswordInput.addEventListener('input', function() {
+                    if (confirmPasswordInput.value && confirmPasswordInput.value !== this.value) {
+                        confirmPasswordInput.setCustomValidity('Las contraseñas no coinciden');
+                    } else {
+                        confirmPasswordInput.setCustomValidity('');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
