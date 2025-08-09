@@ -172,6 +172,12 @@ function renderServiceCategory(containerId, services) {
 
 // Shopping Cart Functions
 function addToCart(serviceId) {
+    // Special case: Redirect directly to Mercado Pago for 500 followers
+    if (serviceId === 'followers-500') {
+        window.open('https://mpago.la/1yH57Po', '_blank');
+        return;
+    }
+    
     const service = findServiceById(serviceId);
     if (!service) return;
     
