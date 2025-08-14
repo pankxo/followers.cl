@@ -310,7 +310,7 @@ function checkout() {
             currency_id: 'CLP'
         })),
         payer: {
-            email: 'customer@example.com' // This would be collected from user
+            email: 'customer@example.com' // This should be collected from user in production
         },
         back_urls: {
             success: window.location.origin + '/success',
@@ -321,11 +321,62 @@ function checkout() {
         notification_url: window.location.origin + '/webhook'
     };
     
-    // For demo purposes, show order summary and redirect to WhatsApp
+    // Try Mercado Pago integration first
+    processMercadoPagoPayment(orderData, orderSummary, total);
+}
+
+// Process payment with Mercado Pago
+async function processMercadoPagoPayment(orderData, orderSummary, total) {
+    try {
+        // Send order to backend to create preference
+        const response = await fetch('/create_preference', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(orderData)
+        });
+
+        if (response.ok) {
+            const data = await response.json();
+            
+            // TODO: Initialize Mercado Pago with Public Key
+            // const mp = new MercadoPago('YOUR_PUBLIC_KEY', {
+            //     locale: 'es-CL'
+            // });
+            
+            // Redirect to Mercado Pago checkout
+            const preferenceId = data.id;
+            
+            // TODO: Uncomment when you have your Public Key configured
+            // window.location.href = `https://www.mercadopago.com.cl/checkout/v1/redirect?pref_id=${preferenceId}`;
+            
+            // For now, show success message and clear cart
+            alert(`Preferencia creada exitosamente. ID: ${preferenceId}\n\nEn producción, esto redirigiría a Mercado Pago.`);
+            
+            // Clear cart after creating preference
+            cart = [];
+            updateCartDisplay();
+            toggleCart();
+            
+        } else {
+            console.log('Backend endpoint not available, falling back to WhatsApp');
+            // Fall back to WhatsApp if backend is not available
+            fallbackToWhatsApp(orderSummary, total);
+        }
+    } catch (error) {
+        console.log('Mercado Pago integration failed:', error);
+        // Fall back to WhatsApp on any error
+        fallbackToWhatsApp(orderSummary, total);
+    }
+}
+
+// Fallback to WhatsApp integration
+function fallbackToWhatsApp(orderSummary, total) {
     const message = `¡Hola! Me interesa realizar el siguiente pedido:\n\n${orderSummary}\n\nTotal: $${total.toLocaleString('es-CL')}\n\n¿Podrían ayudarme con el proceso de pago?`;
     const whatsappUrl = `https://wa.me/56912345678?text=${encodeURIComponent(message)}`;
     
-    if (confirm(`Resumen del pedido:\n\n${orderSummary}\n\nTotal: $${total.toLocaleString('es-CL')}\n\n¿Deseas continuar con WhatsApp para completar tu compra?`)) {
+    if (confirm(`El pago con Mercado Pago no está disponible en este momento.\n\nResumen del pedido:\n\n${orderSummary}\n\nTotal: $${total.toLocaleString('es-CL')}\n\n¿Deseas continuar con WhatsApp para completar tu compra?`)) {
         window.open(whatsappUrl, '_blank');
         
         // Clear cart after successful order
@@ -335,11 +386,22 @@ function checkout() {
     }
 }
 
-// Mercado Pago Integration (This would be implemented server-side)
+// Mercado Pago Integration
+// TODO: Add your Mercado Pago Public Key here
+// const MP_PUBLIC_KEY = 'YOUR_PUBLIC_KEY'; // Replace with your actual public key
+
 function initializeMercadoPago() {
-    // This is where you would initialize the Mercado Pago SDK
-    // For security reasons, the actual integration should be done server-side
-    console.log('Mercado Pago integration would be initialized here');
+    // TODO: Initialize Mercado Pago SDK with your Public Key
+    // This should be called when you have configured your credentials
+    
+    // Example initialization:
+    // const mp = new MercadoPago(MP_PUBLIC_KEY, {
+    //     locale: 'es-CL'
+    // });
+    // return mp;
+    
+    console.log('Mercado Pago integration ready - add your Public Key to enable');
+    return null;
 }
 
 // Animation helpers
