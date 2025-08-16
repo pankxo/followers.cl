@@ -52,11 +52,60 @@ body {
 }
 
 .nav-logo h1 {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 28px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.logo-icon {
+    position: relative;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-circle {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--instagram-gradient);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-inner {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border: 3px solid white;
+    border-radius: 50%;
+    background: transparent;
+}
+
+.logo-inner::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    width: 8px;
+    height: 8px;
+    border: 2px solid white;
+    border-radius: 50%;
+    background: transparent;
+}
+
+.logo-text {
     background: var(--instagram-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    font-size: 28px;
     font-weight: bold;
 }
 
@@ -469,6 +518,22 @@ footer {
     
     .nav-logo h1 {
         font-size: 22px;
+        gap: 10px;
+    }
+    
+    .logo-icon {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .logo-circle {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .logo-inner {
+        width: 14px;
+        height: 14px;
     }
     
     .hero-content h1 {
