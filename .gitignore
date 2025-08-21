@@ -44,4 +44,5 @@ temp/
 
 # API Keys (never commit these)
 config/keys.js
+config/api.php
 mercadopago-keys.json
